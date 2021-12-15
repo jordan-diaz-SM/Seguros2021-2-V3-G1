@@ -27,6 +27,9 @@ public class CorreoMediator implements ICorredorMediator {
     }
 
     public void enviaCorreoSMTP(Cliente cliente) {
+
+        setServidorCorreoSMTP("smtp.gmail.com");
+        
         // enviando correo...
         System.out.println( preparaMensaje(cliente.getNombre()) );
 

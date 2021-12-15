@@ -82,6 +82,9 @@ public class App {
         ClienteAsegurado asegurado = new ClienteAsegurado("Pedro Pablo", 44123121, correoMediator);
         asegurado.enviaCorreo();
 
+        ClienteAsegurado asegurado2 = new ClienteAsegurado("Pepito Pepe", 43323211, correoMediator);
+        asegurado2.enviaCorreo();
+
         // Agregando Observadores
         System.out.println("\n[App] Observador para cambio en Suma Asegurada");
         seguro2.addObserver(cliente);
@@ -89,10 +92,10 @@ public class App {
         seguro2.setSumaAsegurada(100000.00);
 
         // Interpretando operaciones por SMS
-        String numero = String.valueOf(seguro.getNumero());
-        String sms[] = {"PRIMA",numero};
-        //String sms[] = {"CONSULTA","44123121", "44123122"};
-        //String sms[] = {"CONSULTA","44123121", "PRIMA", numero};
+        String numero = String.valueOf(seguro2.getNumero());
+        //String sms[] = {"PRIMA",numero};
+        //String sms[] = {"CONSULTA","44123121","44123133"};
+        String sms[] = {"CONSULTA","44123121", "PRIMA", numero};
 
         ContextCliente context = new ContextCliente();
         context.setCliente(cliente);
