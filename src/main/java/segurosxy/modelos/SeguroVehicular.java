@@ -6,11 +6,12 @@ public class SeguroVehicular extends Seguro {
 
     private ICobertura cobertura;
 
-    public SeguroVehicular(String marca, String modelo)    {
+    public SeguroVehicular(String marca, String modelo, Double prima)    {
 
         super();
         this.marca = marca;
         this.modelo = modelo;
+        this.prima = prima;
     }
 
     @Override

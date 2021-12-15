@@ -3,10 +3,11 @@ package segurosxy.modelos;
 public class SeguroTarjeta extends Seguro {
 
 
-    public SeguroTarjeta(String bancoTarjeta)    {
+    public SeguroTarjeta(String bancoTarjeta, Double prima)    {
 
         super();
         this.bancoTarjeta = bancoTarjeta;
+        this.prima = prima;
     }
 
     @Override
