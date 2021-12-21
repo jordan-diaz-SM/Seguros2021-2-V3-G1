@@ -10,8 +10,8 @@ public class NotificationPushMediator implements INotificationPushMediator {
         final StringBuffer salida = new StringBuffer();
 
         //salida.append("\n================================================================\n");
-        salida.append("[NotificationPushMediator] Enviando notificacion, servidor IP: " );
-        salida.append("\n[NotificationPushMediator]                                  Cliente: "+ nombre );
+        salida.append("[NotificationPushMediator] Enviando notificacion " );
+        salida.append("\n[NotificationPushMediator] Cliente: "+ nombre );
         //salida.append("\n================================================================\n");
 
 

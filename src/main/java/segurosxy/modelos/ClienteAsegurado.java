@@ -1,22 +1,23 @@
 package segurosxy.modelos;
 
 import segurosxy.modelos.patrones.CorreoMediator;
+import segurosxy.modelos.patrones.NotificationPushMediator;
 
 public class ClienteAsegurado extends Cliente {
 
-    public ClienteAsegurado(String nombre, Integer dni, CorreoMediator correoMediator) {
+    public ClienteAsegurado(String nombre, Integer dni, NotificationPushMediator notificationPushMediator) {
 
-        super(nombre, dni, correoMediator);
+        super(nombre, dni, notificationPushMediator);
     }
 
     public void notifica(){
         super.notifica();
-        enviaCorreo();
+        enviaNotificacion();
     }
 
-    public void enviaCorreo()    {
+    public void enviaNotificacion()    {
 
         //correoMediator.setServidorCorreoSMTP("smtp.gmail.com");
-        correoMediator.enviaCorreoSMTP(this);
+        notificationPushMediator.enviaNotificationPush(this);
     }
 }

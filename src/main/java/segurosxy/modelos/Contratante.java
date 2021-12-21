@@ -1,11 +1,12 @@
 package segurosxy.modelos;
 
 import segurosxy.modelos.patrones.CorreoMediator;
+import segurosxy.modelos.patrones.NotificationPushMediator;
 
 public class Contratante extends Cliente {
 
-    public Contratante(String nombre, Integer dni, CorreoMediator correoMediator) {
-        super(nombre, dni, correoMediator);
+    public Contratante(String nombre, Integer dni, NotificationPushMediator notificationPushMediator) {
+        super(nombre, dni, notificationPushMediator);
        
     }
     
@@ -17,6 +18,6 @@ public class Contratante extends Cliente {
     public void enviaCorreo()    {
 
         //correoMediator.setServidorCorreoSMTP("smtp.gmail.com");
-        correoMediator.enviaCorreoSMTPContratante(this);
+        notificationPushMediator.enviaNotificationPush(this);
     }
 }
