@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import segurosxy.modelos.Cliente;
 import segurosxy.modelos.ClienteAsegurado;
+import segurosxy.modelos.Contratante;
 import segurosxy.modelos.Impresora;
+import segurosxy.modelos.Mediador;
 import segurosxy.modelos.Poliza;
 import segurosxy.modelos.SeguroTarjeta;
 import segurosxy.modelos.SeguroVehicular;
@@ -78,18 +80,18 @@ public class App {
 
         // Correo Mediator
         System.out.println("\n[App] Notificaciones con CorreoMediator");
-        CorreoMediator correoMediator = new CorreoMediator();
-        ClienteAsegurado asegurado = new ClienteAsegurado("Pedro Pablo", 44123121, correoMediator);
-        asegurado.enviaCorreo();
+        //CorreoMediator correoMediator = new CorreoMediator();
+        //ClienteAsegurado asegurado = new ClienteAsegurado("Pedro Pablo", 44123121, correoMediator);
+        //asegurado.enviaCorreo();
 
-        ClienteAsegurado asegurado2 = new ClienteAsegurado("Pepito Pepe", 43323211, correoMediator);
-        asegurado2.enviaCorreo();
+        //ClienteAsegurado asegurado2 = new ClienteAsegurado("Pepito Pepe", 43323211, correoMediator);
+        //asegurado2.enviaCorreo();
 
         // Agregando Observadores
-        System.out.println("\n[App] Observador para cambio en Suma Asegurada");
-        seguro2.addObserver(cliente);
-        seguro2.addObserver(asegurado);
-        seguro2.setSumaAsegurada(100000.00);
+        //System.out.println("\n[App] Observador para cambio en Suma Asegurada");
+        //seguro2.addObserver(cliente);
+        //seguro2.addObserver(asegurado);
+        //seguro2.setSumaAsegurada(100000.00);
 
         // Interpretando operaciones por SMS
         String numero = String.valueOf(seguro2.getNumero());
@@ -103,6 +105,32 @@ public class App {
 
         // Mostramos el resultado
         System.out.println("El resultado de la interpretación es " + context.getResult());
+
+          // Correo Mediator
+          System.out.println("\n[App] Notificaciones con CorreoMediator");
+          CorreoMediator correoMediator = new CorreoMediator();
+          ClienteAsegurado asegurado = new ClienteAsegurado("jose Diaz", 11232131, correoMediator);
+          //asegurado.enviaCorreo();
+          
+          Contratante contratante = new Contratante("Pablo Perez",1123213,correoMediator);
+          //contratante.enviaCorreo();
+
+          Mediador mediador = new Mediador("Raul Gomez", 123123213, correoMediator);
+          //mediador.enviaCorreo();
+          
+          // Agregando Observadores
+          System.out.println("\n[App] Observador para cambio en Suma Asegurada");
+          seguro2.addObserver(cliente);
+          seguro2.addObserver(asegurado);
+          seguro2.addObserver(contratante);
+          seguro2.addObserver(mediador);
+          seguro2.setSumaAsegurada(100000.00);
+
+            // Notifaication Push
+            //System.out.println("\n[App] Notificaciones con CorreoMediator");
+            //CorreoMediator correoMediator = new CorreoMediator();
+            // ClienteAsegurado asegurado = new ClienteAsegurado("jose Diaz", 11232131, correoMediator);
+
 
     }
 }
