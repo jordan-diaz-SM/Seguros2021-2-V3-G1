@@ -2,13 +2,12 @@ package segurosxy.modelos;
 
 import segurosxy.modelos.patrones.CorreoMediator;
 
-public class ClienteAsegurado extends Cliente {
+public class ServicioTecnico extends Cliente{
 
-    public ClienteAsegurado(String nombre, Integer dni, CorreoMediator correoMediator) {
-
-        super(nombre, dni, correoMediator);
+    public ServicioTecnico(String nombre, Integer dni, CorreoMediator correoMediator) {
+        super(nombre, dni,correoMediator);
+        //TODO Auto-generated constructor stub
     }
-
     public void notifica(){
         super.notifica();
         enviaCorreo();

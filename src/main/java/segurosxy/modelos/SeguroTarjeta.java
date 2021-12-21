@@ -26,4 +26,7 @@ public class SeguroTarjeta extends Seguro {
 
         return "Seg. Tarjeta Numero: " + this.numero + " con riesgo: " + this.nivelRiesgo;
     }
+
+
+    
 }

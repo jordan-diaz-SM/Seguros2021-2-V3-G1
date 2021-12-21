@@ -1,10 +1,16 @@
 package segurosxy.modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import segurosxy.modelos.interfaces.IClienteObserver;
 import segurosxy.modelos.interfaces.ICobertura;
 
-public class SeguroVehicular extends Seguro {
+public class SeguroVehicular extends Seguro{
 
     private ICobertura cobertura;
+
+    protected List<IClienteObserver> clienteAsegurado;
 
     public SeguroVehicular(String marca, String modelo, Double prima)    {
 
@@ -12,6 +18,7 @@ public class SeguroVehicular extends Seguro {
         this.marca = marca;
         this.modelo = modelo;
         this.prima = prima;
+        this.clienteAsegurado = new ArrayList<IClienteObserver>();
     }
 
     @Override
@@ -32,9 +39,26 @@ public class SeguroVehicular extends Seguro {
     }
 
     public void calcularCobeturaVehicular( ICobertura cobertura )  {
-
         cobertura.calculaCobertura();
         
         System.out.println();
+    }
+    
+
+    public void cubrirIncidente(){
+        // notify contratante
+        //System.out.println("***********************************************************");
+        System.out.println("[Seguro] Autorizado por la aseguradora para cubri incidente... ");
+        //System.out.println("***********************************************************");
+        for( IClienteObserver a : this.clienteAsegurado) {
+            a.notifica();
+        }
+    }
+    public void addObserver(IClienteObserver observer) {
+        this.clienteAsegurado.add( observer );
+    }
+
+    public void removeObserver(IClienteObserver observer) {
+        this.clienteAsegurado.remove( observer );
     }
 }
