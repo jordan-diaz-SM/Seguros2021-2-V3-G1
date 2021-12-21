@@ -15,6 +15,7 @@ public class ContextCliente {
     private StringBuffer result;
 
     private Cliente cliente;
+    private Seguro seguro;
 
     public Cliente getCliente() {
         return cliente;
@@ -49,6 +50,8 @@ public class ContextCliente {
                     this.nextOp = "prima";
             else if(operation.toLowerCase().equals("consulta"))
                     this.nextOp = "consulta";
+            else if(operation.toLowerCase().equals("alta"))
+                    this.nextOp = "alta";
     }
 
 
@@ -82,6 +85,15 @@ public class ContextCliente {
                 
                 if (indicador != 1) this.result.append("NO ");
             }
+            else if (this.nextOp.toLowerCase().equals("alta"))   {
+                for (IClienteObserver contratante : seguro.getContratantes()) {
+                    Cliente clienteAsegurado = (Cliente)contratante;    
+                    if(clienteAsegurado.getDni() == operator){
+                        
+                    }
+                }
+            }
+
     }
 
     public String getResult()  {

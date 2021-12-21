@@ -38,68 +38,76 @@ public class App {
 
         Cliente cliente = new Cliente("Juan Perez", 45303232);
 
-        SeguroVehicular seguro = new SeguroVehicular("Toyota","Yaris", 1500.00);
-        seguro.cacularRiesgo();
+        //SeguroVehicular seguro = new SeguroVehicular("Toyota","Yaris", 1500.00);
+        //seguro.cacularRiesgo();
 
         // Agregrando cobertura al seguro
-        ICobertura cobertura = new CoberturaTodoRiesgoDecorator( new CoberturaPorRoboDecorator( new CoberturaBasicaVehicular() ) );
-        seguro.calcularCobeturaVehicular( cobertura );
+        //ICobertura cobertura = new CoberturaTodoRiesgoDecorator( new CoberturaPorRoboDecorator( new CoberturaBasicaVehicular() ) );
+        //seguro.calcularCobeturaVehicular( cobertura );
 
-        cliente.setCompraSeguro(seguro);
+        //cliente.setCompraSeguro(seguro);
 
         // Imprimiendo la Poliza
         //Poliza poliza = new Poliza(1111, cliente.getNombre(), cliente.getNombre() );
         //PolizaXML adaptadorXML = new PolizaXML(poliza);
         //Impresora.imprimir( adaptadorXML.armarSalidaTexto() );
-        Impresora.imprimir( new PolizaXML(new Poliza(1111, cliente.getNombre(), cliente.getNombre())).armarSalidaTexto() );
+        //Impresora.imprimir( new PolizaXML(new Poliza(1111, cliente.getNombre(), cliente.getNombre())).armarSalidaTexto() );
 
-        Impresora.imprimir( new PolizaJSON(2222, cliente.getNombre(), cliente.getNombre()).armarSalidaTexto() );
+        //Impresora.imprimir( new PolizaJSON(2222, cliente.getNombre(), cliente.getNombre()).armarSalidaTexto() );
 
         SeguroTarjeta seguro2 = new SeguroTarjeta("BCP", 12.00);
         seguro2.cacularRiesgo();
         seguro2.setPoliza(new Poliza(122122, "Juan Pablo", "Juan Perez"));
-        cliente.setCompraSeguro(seguro2);
+        //cliente.setCompraSeguro(seguro2);
 
-        cliente.getListaSeguroCliente();
+        //cliente.getListaSeguroCliente();
 
         // Agregar Ubigeos para el cliente
-        UbigeoContext ubigeoCasa = new UbigeoContext( "15", "01", "25");
-        cliente.setUbigeoCasa( ubigeoCasa );
-        UbigeoContext ubigeoTrabajo = new UbigeoContext( "15", "01", "25");
-        cliente.setUbigeoTrabajo( ubigeoTrabajo );
+        //UbigeoContext ubigeoCasa = new UbigeoContext( "15", "01", "25");
+        //cliente.setUbigeoCasa( ubigeoCasa );
+        //UbigeoContext ubigeoTrabajo = new UbigeoContext( "15", "01", "25");
+        //cliente.setUbigeoTrabajo( ubigeoTrabajo );
 
-        cliente.printUbigeos();
+        //cliente.printUbigeos();
 
 
-        SeguroVehicular seguro3 = new SeguroVehicular("Nissan","Sentra", 1000.00);
-        ICobertura cobertura2 = new CoberturaPorChoqueDecorator( new CoberturaBasicaVehicular() );
-        seguro3.calcularCobeturaVehicular( cobertura2 );
+        //SeguroVehicular seguro3 = new SeguroVehicular("Nissan","Sentra", 1000.00);
+        //ICobertura cobertura2 = new CoberturaPorChoqueDecorator( new CoberturaBasicaVehicular() );
+        //seguro3.calcularCobeturaVehicular( cobertura2 );
 
 
         // Correo Mediator
         System.out.println("\n[App] Notificaciones con CorreoMediator");
         CorreoMediator correoMediator = new CorreoMediator();
-        ClienteAsegurado asegurado = new ClienteAsegurado("Pedro Pablo", 44123121, correoMediator);
-        asegurado.enviaCorreo();
+        //ClienteAsegurado asegurado = new ClienteAsegurado("Pedro Pablo", 44123121, correoMediator);
+        //asegurado.enviaCorreo();
 
         ClienteAsegurado asegurado2 = new ClienteAsegurado("Pepito Pepe", 43323211, correoMediator);
-        asegurado2.enviaCorreo();
+        //asegurado2.enviaCorreo();
 
         // Agregando Observadores
-        System.out.println("\n[App] Observador para cambio en Suma Asegurada");
-        seguro2.addObserver(cliente);
-        seguro2.addObserver(asegurado);
-        seguro2.setSumaAsegurada(100000.00);
+        //System.out.println("\n[App] Observador para cambio en Suma Asegurada");
+        //seguro2.addObserver(cliente);
+        //seguro2.addObserver(asegurado);
+        //seguro2.setSumaAsegurada(100000.00);
 
         // Interpretando operaciones por SMS
+        String prima = String.valueOf(seguro2.getPrima());
         String numero = String.valueOf(seguro2.getNumero());
         //String sms[] = {"PRIMA",numero};
         //String sms[] = {"CONSULTA","44123121","44123133"};
-        String sms[] = {"CONSULTA","44123121", "PRIMA", numero};
 
+        
+        ClienteAsegurado asegurado3 = new ClienteAsegurado("Ramiro", 77382901, correoMediator);
+        String dni = String.valueOf(asegurado3.getDni());
+
+
+        String sms[] = {"CONSULTA","44123121", "PRIMA", prima};
+        String sms2[] = {"ALTA",dni,numero};
+    
         ContextCliente context = new ContextCliente();
         context.setCliente(cliente);
-        procesaSMS( sms, context );
+        procesaSMS( sms2, context );
 
         // Mostramos el resultado
         System.out.println("El resultado de la interpretación es " + context.getResult());
