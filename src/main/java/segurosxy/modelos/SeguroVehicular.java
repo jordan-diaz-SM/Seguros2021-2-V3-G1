@@ -48,7 +48,7 @@ public class SeguroVehicular extends Seguro{
     public void cubrirIncidente(){
         // notify contratante
         //System.out.println("***********************************************************");
-        System.out.println("[Seguro] Autorizado por la aseguradora para cubri incidente... ");
+        System.out.println("[Seguro] Autorizado por la aseguradora para cubrir incidente... ");
         //System.out.println("***********************************************************");
         for( IClienteObserver a : this.clienteAsegurado) {
             a.notifica();
